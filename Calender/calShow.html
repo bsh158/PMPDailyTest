@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calender</title>
+</head>
+<body>
+<center>
+	<form action="calender.php" method="get" accept-charset="utf-8">
+
+	<select name="y">
+		
+		<?php 
+		$j=2020;
+		for($i=2015;$i<=$j;$i++){?>
+
+			<?php if(isset($y) && $y==$i){?>
+				<option value="<?php echo $i;?>" selected><?php echo $i;?></option>
+			<?php }else{?>
+    			<option value="<?php echo $i;?>"><?php echo $i;?></option>	
+
+    	<?php } } ?>
+
+	</select>
+
+	<select name="m">
+
+		<?php 
+		$j=12;
+		for($i=1;$i<=$j;$i++){?>
+
+    		<?php if(isset($m) && $m==$i){?>
+				<option value="<?php echo $i;?>" selected><?php echo $i;?></option>
+			<?php }else{?>
+    			<option value="<?php echo $i;?>"><?php echo $i;?></option>
+
+    	<?php } } ?>
+    	
+	</select>
+	<input type="submit" value="查看">
+	</form>
+
+<table cellpadding="0" cellspacing="0" border="1">
+	    <tr>
+	        <th>星期日</th>
+	        <th>星期一</th>
+	        <th>星期二</th>
+	        <th>星期三</th>
+	        <th>星期四</th>
+	        <th>星期五</th>
+	        <th>星期六</th>
+	    </tr>
+	    <tr>
+	    	<?php for($i=0;$i<$week;$i++){?>
+	    	<th></th>
+	    	<?php } ?>
+	    	
+		   	<?php foreach($date as $key=>$val){?>
+		   			
+						<th><?=$val?></th>	
+
+					<?php if(($week+$key)%7==0){?>
+						</tr><tr>
+					<?php }?>
+
+		   	<?php }?>
+		</tr>   	
+</table>
+	
+</center>
+</body>
+</html>
+<!-- <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	function ckth(){
+		window.location.reload();
+		$(document).on('click','.th',function(){
+			$(this).nextAll().attr('style',"");
+			$(this).css({
+				"background-color": 'red'
+			});
+		})
+	}
+</script> -->
